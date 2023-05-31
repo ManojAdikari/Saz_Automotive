@@ -6,7 +6,8 @@ import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
 import { ADD_NEW_VEHHICLE } from '../utils/mutations';
 import Auth from '../utils/auth';
-
+import axios from "axios"
+import e from 'cors';
 
 const Addnewvehicle = () => {
 
@@ -30,29 +31,40 @@ const Addnewvehicle = () => {
         Veh_Image3: '',
         Veh_Amount: "" ,
     });
+    const [file,setFile] = useState("");
 
     const [addnewvehicle, { error, data }] = useMutation(ADD_NEW_VEHHICLE);
 
+
+    
+  
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setFormState({
-            ...formState,
+       setFormState({
+           ...formState,
             [name]: value,
-        });
+       });
     };
+
+
+
 
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+    
         console.log(formState);
 
         try {
             const { data } = await addnewvehicle({
                 variables: { ...formState },
             });
-            //window.location.reload();
+
+            
+            window.location.reload();
            // Auth.login(data.addUser.token);
+          
 
         } catch (e) {
             console.error(e);
@@ -60,11 +72,24 @@ const Addnewvehicle = () => {
     };
 
 
-    const submitForms = function () {
-        //const VehicalData =document.getElementById("VehicalData").submit();
-        //const VehicalData2= document.getElementById("VehicalData2").submit();
-        // console.log(VehicalData,VehicalData2);
+
+
+    const addUserData = async(e)=>{
+       
+
+        try {
+            await axios.post("http://localhost:3001/api/InsertData/SaveVehical",formState);
+
+        }
+        catch(err) {
+      console.log(err)
+
+        }
     }
+
+
+        
+    
 
     return (
         <>
@@ -229,7 +254,7 @@ const Addnewvehicle = () => {
                                             <div className="row mb-3">
                                                 <label className="col-sm-2 col-form-label">Image 1</label>
                                                 <div className="col-sm-10">
-                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Image1} name='Veh_Image1' />
+                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} name='Veh_Image1' />
                                                 </div>
                                             </div>
                                             <div className="row mb-3">
@@ -265,7 +290,7 @@ const Addnewvehicle = () => {
                         <div className="row mb-3">
 
                             <div className="col-sm-10">
-                                <button type="submit" className="btn btn-primary" id='btnSave' onClick={handleFormSubmit}  >Submit To System</button>
+                                <button type="submit" className="btn btn-primary" id='btnSave' onClick={ handleFormSubmit}  >Submit To System</button>
                             </div>
                         </div>
                     </section>

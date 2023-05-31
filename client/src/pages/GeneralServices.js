@@ -1,14 +1,7 @@
 import { React, useState, Fragment } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 import TestCar from '../images/TestCar.jpg';
 import { nanoid } from "nanoid";
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
-import Auth from '../utils/auth';
-
 import EditableRow from '../components/EditableRow';
 import ReadOnlyRow from '../components/ReadOnlyRow';
 import { QUERY_SELECT_ALL_VEHICLE } from '../utils/queries';
@@ -16,8 +9,7 @@ var Amounts = 0;
 var NewAmounts = 0;
 
 const Profile = () => {
-    let sumvalv = 0;
-    let Newsumvalv = 0;
+
     let activities = [];
     const { loading, data } = useQuery(QUERY_SELECT_ALL_VEHICLE);
     const DbVehical = data?.getallVehicle || [];

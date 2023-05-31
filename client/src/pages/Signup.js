@@ -71,7 +71,7 @@ const Signup = () => {
 
                     {data ? (
                       <Alert variant='success'>
-                      
+                      <p>successfully created</p>
                     </Alert>
                     ) : (
 
