@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const Vehicals = require('../models/Vehicals');
 const VehicleMake = require('../models/VehicleMake');
 const VehicleModel = require('../models/VehicleModel');
-
+const Employee = require('../models/Employee');
 const resolvers = {
   Query: {
     users: async () => {
@@ -32,7 +32,10 @@ const resolvers = {
       return VehicleMake.findAll();
     },
 
- 
+    allEmployee: async () => {
+      return Employee.findAll();
+    },
+
 
   },
 
@@ -78,6 +81,10 @@ const resolvers = {
     },
     addvehiclemodel: async (parent, {vehmake,vehmodel}) => {
       return VehicleModel.create({vehmake,vehmodel});
+    },
+
+    addEmployee: async (parent, {empfirstname,emplastname,empdateofbirth,empaddress,empphone,empemail,empjobtitle}) => {
+      return Employee.create({empfirstname,emplastname,empdateofbirth,empaddress,empphone,empemail,empjobtitle});
     }
     
 

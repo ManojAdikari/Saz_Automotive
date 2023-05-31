@@ -1,37 +1,50 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class System_users extends Model {}
+class Employee extends Model {}
 
 // create fields/columns for Traveller model
-System_users.init(
+Employee.init(
   {
 
 
-    id: {
+    empid: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    First_Name: {
+    empfirstname: {
       type: DataTypes.STRING,
       // prevents null values
       allowNull: false,
-      // will only allow alphanumeric characters
-      validate: {
-        isAlphanumeric: true,
-      },
+     
     },
-    Last_Name: {
+    emplastname: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
+      
     },
-    Date_Of_Birth: {
+    empdateofbirth: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        
+      },
+      empaddress: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        
+      },
+      empphone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+       
+      },
+      empemail: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -39,37 +52,11 @@ System_users.init(
           isEmail: true,
         },
       },
-      Address: {
+      empjobtitle: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
-      Phone: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
-      Email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
-      Job_Title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
+       
       },
    
 
@@ -79,8 +66,8 @@ System_users.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'System_users',
+    modelName: 'employee',
   }
 );
 
-module.exports = System_users;
+module.exports = Employee;
