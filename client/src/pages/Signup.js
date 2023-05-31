@@ -6,26 +6,36 @@ import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-
+import { useQuery } from '@apollo/client';
+import { QUERY_SELECT_ALL_VEHICLE } from '../utils/queries'
+import AllEmployeeSelect from '../components/AllEmployeeSelect'
 
 const Signup = () => {
-  const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [formState, setFormState] = useState(
+
+    {
+      username: '',
+      email: '',
+      password: '',
+    });
 
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
+    if(name==="username")
+    {
+      document.getElementById("username");
+       console.log(value)
+    }
+
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
+  console.log(formState);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -40,6 +50,12 @@ const Signup = () => {
       console.error(e);
     }
   };
+
+  ////////////////////
+
+
+
+
 
   return (
     <div>
@@ -71,20 +87,23 @@ const Signup = () => {
 
                     {data ? (
                       <Alert variant='success'>
-                      <p>successfully created</p>
-                    </Alert>
+                        <p>successfully created</p>
+                      </Alert>
                     ) : (
 
                       <form className="row g-3 needs-validation" noValidate onSubmit={handleFormSubmit}>
-                        <div className="col-12">
-                          <label htmlFor="yourName" className="form-label">Select Name</label>
 
-                          <select className="form-select" id="yourName" required onChange={handleChange} value={formState.username} name='username' >
-                            <option value="Select Name">Select Name</option>
-                            <option value="TestUserOne">TestUserOne</option>
-                            <option value="TestUserTwo">TestUserTwo</option>
+                        <div className="col-12">
+                        <label  className="form-label">Select Name</label>
+                          <select className="form-select" name='username' required onChange={handleChange} value={formState.username} 
+                          
+                          >
+                          <AllEmployeeSelect  />
                           </select>
+
+                         
                         </div>
+
 
                         <div className="col-12">
                           <label htmlFor="yourEmail" className="form-label">Your Email</label>

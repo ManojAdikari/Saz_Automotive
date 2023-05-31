@@ -6,7 +6,7 @@ class System_users extends Model {}
 // create fields/columns for Traveller model
 System_users.init(
   {
-
+    
 
     id: {
       type: DataTypes.INTEGER,
@@ -14,14 +14,13 @@ System_users.init(
       primaryKey: true,
       autoIncrement: true,
     },
+
     username: {
       type: DataTypes.STRING,
       // prevents null values
       allowNull: false,
       // will only allow alphanumeric characters
-      validate: {
-        isAlphanumeric: true,
-      },
+    
     },
     email: {
       type: DataTypes.STRING,
@@ -36,9 +35,10 @@ System_users.init(
       allowNull: false,
       // must be longer than 8 characters
       validate: {
-        len: [8],
+        len: [5],
       },
     },
+  
 
   }, {
   

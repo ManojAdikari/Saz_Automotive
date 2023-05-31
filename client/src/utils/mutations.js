@@ -36,4 +36,17 @@ mutation addVehicale($Veh_Make:String!, $Veh_Model:String!, $Veh_Year:String!,$V
 }
 `;
 
-module.exports = {LOGIN_USER,ADD_USER,ADD_NEW_VEHHICLE};
+const ADD_NEW_EMPLOYEE = gql`
+mutation addEmployee($empfirstname :String! ,$emplastname :String!,$empdateofbirth :String!,$empaddress :String!,$empphone :String!,$empemail :String!,$empjobtitle :String!) {
+  addEmployee(empfirstname :$empfirstname ,emplastname :$emplastname,empdateofbirth :$empdateofbirth,empaddress :$empaddress,empphone :$empphone,empemail :$empemail,empjobtitle :$empjobtitle) {
+                                                                                                                                                                                                                                                                                                                                                                                                         
+    token
+    user {
+      id
+      username
+    }
+  }
+}
+`;
+
+module.exports = {LOGIN_USER,ADD_USER,ADD_NEW_VEHHICLE,ADD_NEW_EMPLOYEE};

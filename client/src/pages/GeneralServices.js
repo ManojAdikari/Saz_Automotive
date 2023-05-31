@@ -208,7 +208,7 @@ const Profile = () => {
 
                             <div className="form-floating">
                                 <select className="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                    <option >Select Vehicle</option>
+                                    <option >-</option>
 
                                     {activities.map((item,index) => {
 

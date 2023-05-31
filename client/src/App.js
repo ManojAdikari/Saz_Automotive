@@ -21,7 +21,7 @@ import Addnewvehicle from './pages/AddVehicle';
 import ViewAllVehicle from './pages/ViewAllVehicle';
 import GeneralServices from './pages/GeneralServices'
 import AddEmployee from './pages/AddEmployee'
-
+import Repairs from './pages/Repairs'
 
 import './vendor/bootstrap/css/bootstrap.min.css';
 import './vendor/bootstrap-icons/bootstrap-icons.css';
@@ -119,6 +119,10 @@ function App() {
               <Route
                 path="/addEmployee"
                 element={<AddEmployee />}
+              />
+ <Route
+                path="/Repairs"
+                element={<Repairs />}
               />
 
 

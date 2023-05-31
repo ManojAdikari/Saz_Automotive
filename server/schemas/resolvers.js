@@ -6,6 +6,7 @@ const Vehicals = require('../models/Vehicals');
 const VehicleMake = require('../models/VehicleMake');
 const VehicleModel = require('../models/VehicleModel');
 const Employee = require('../models/Employee');
+const { query } = require('express');
 const resolvers = {
   Query: {
     users: async () => {
@@ -44,8 +45,11 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
+
       const user = await System_users.create({ username, email, password });
       const token = signToken(user);
+     
+     
       return { token, user };
     },
 

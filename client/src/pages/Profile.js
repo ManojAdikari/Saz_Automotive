@@ -3,13 +3,14 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import noimage from '../images/NouserImage.png'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  
+
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -17,6 +18,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  console.log(user);
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -37,291 +39,212 @@ const Profile = () => {
 
   return (
 
-<main id="main" className="main">
+    <main id="main" className="main">
 
 
-<div className="pagetitle">
+      <div className="pagetitle">
 
-</div>
-<section className="section profile">
-  <div className="row">
-    <div className="col-xl-4">
-
-      <div className="card">
-        <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-          <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle"/>
-          <h2>{user.username}</h2>
-          <h3>{user.email}</h3>
-          <div className="social-links mt-2">
-            <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
-            <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
-            <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
-            <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
-          </div>
-        </div>
       </div>
+      <section className="section profile">
+        <div className="row">
+          <div className="col-xl-4">
 
-    </div>
+            <div className="card">
+              <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-    <div className="col-xl-8">
+                <img src={noimage} alt="Profile" className="rounded-circle" />
+                <h2>{user.username}</h2>
+                <h3>{user.email}</h3>
 
-      <div className="card">
-        <div className="card-body pt-3">
-          
-          <ul className="nav nav-tabs nav-tabs-bordered">
-
-            <li className="nav-item">
-              <button className="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-            </li>
-
-            <li className="nav-item">
-              <button className="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
-            </li>
-
-            <li className="nav-item">
-              <button className="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-            </li>
-
-            <li className="nav-item">
-              <button className="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
-            </li>
-
-          </ul>
-          <div className="tab-content pt-2">
-
-            <div className="tab-pane fade show active profile-overview" id="profile-overview">
-              <h5 className="card-title">About</h5>
-              <p className="small fst-italic">have various experiences in Sri Lanka and Australia as an It manager, computer programmer. These vivid practical experiences help me to understand the backend of designing and developing automated systems. This position appeals to me as I have seven + years of experience in developing systems in different languages for the central engineering consultancy bureau (government sector) and miracle network & solution (private sector). Namely, a few of the systems that I was involved in developing an accounting system (ERP), vehicle management system, leased property information management system, rate handling system, stock management system, distribution management system, and point of sale system. </p>
-
-              <h5 className="card-title">Profile Details</h5>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label ">Full Name</div>
-                <div className="col-lg-9 col-md-8">Manoj Adikari</div>
               </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Company</div>
-                <div className="col-lg-9 col-md-8">A soft solutions</div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Job</div>
-                <div className="col-lg-9 col-md-8">Web Designer</div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Australia</div>
-                <div className="col-lg-9 col-md-8">a</div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Address</div>
-                <div className="col-lg-9 col-md-8">78 Pratte Av,Pooraka,5095,SA</div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Phone</div>
-                <div className="col-lg-9 col-md-8">0451177703</div>
-              </div>
-
-              <div className="row">
-                <div className="col-lg-3 col-md-4 label">Email</div>
-                <div className="col-lg-9 col-md-8">Manojpadikari@gmail.com</div>
-              </div>
-
-            </div>
-
-            <div className="tab-pane fade profile-edit pt-3" id="profile-edit">
-
-             
-              <form>
-                <div className="row mb-3">
-                  <label for="profileImage" className="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                  <div className="col-md-8 col-lg-9">
-                    <img src="assets/img/profile-img.jpg" alt="Profile"/>
-                    <div className="pt-2">
-                      <a href="#" className="btn btn-primary btn-sm" title="Upload new profile image"><i className="bi bi-upload"></i></a>
-                      <a href="#" className="btn btn-danger btn-sm" title="Remove my profile image"><i className="bi bi-trash"></i></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="fullName" className="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="fullName" type="text" className="form-control" id="fullName" value="Manoj Priyankara Adikari"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="about" className="col-md-4 col-lg-3 col-form-label">About</label>
-                  <div className="col-md-8 col-lg-9">
-                    <textarea name="about" className="form-control" id="about" style={{height: "100px"}}>Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="company" className="col-md-4 col-lg-3 col-form-label">Company</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="company" type="text" className="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Job" className="col-md-4 col-lg-3 col-form-label">Job</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="job" type="text" className="form-control" id="Job" value="Web Designer"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Country" className="col-md-4 col-lg-3 col-form-label">Country</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="country" type="text" className="form-control" id="Country" value="USA"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Address" className="col-md-4 col-lg-3 col-form-label">Address</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="address" type="text" className="form-control" id="Address" value="A108 Adam Street, New York, NY 535022"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Phone" className="col-md-4 col-lg-3 col-form-label">Phone</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="phone" type="text" className="form-control" id="Phone" value="(436) 486-3538 x29071"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Email" className="col-md-4 col-lg-3 col-form-label">Email</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="email" type="email" className="form-control" id="Email" value="k.anderson@example.com"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Twitter" className="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="twitter" type="text" className="form-control" id="Twitter" value="https://twitter.com/#"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Facebook" className="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="facebook" type="text" className="form-control" id="Facebook" value="https://facebook.com/#"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Instagram" className="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="instagram" type="text" className="form-control" id="Instagram" value="https://instagram.com/#"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="Linkedin" className="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="linkedin" type="text" className="form-control" id="Linkedin" value="https://linkedin.com/#"/>
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <button type="submit" className="btn btn-primary">Save Changes</button>
-                </div>
-              </form>
-
-            </div>
-
-            <div className="tab-pane fade pt-3" id="profile-settings">
-
-              
-              <form>
-
-                <div className="row mb-3">
-                  <label for="fullName" className="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                  <div className="col-md-8 col-lg-9">
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" id="changesMade" checked/>
-                      <label className="form-check-label" for="changesMade">
-                        Changes made to your account
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" id="newProducts" checked/>
-                      <label className="form-check-label" for="newProducts">
-                        Information on new products and services
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" id="proOffers"/>
-                      <label className="form-check-label" for="proOffers">
-                        Marketing and promo offers
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input className="form-check-input" type="checkbox" id="securityNotify" checked disabled/>
-                      <label className="form-check-label" for="securityNotify">
-                        Security alerts
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <button type="submit" className="btn btn-primary">Save Changes</button>
-                </div>
-              </form>
-            </div>
-
-            <div className="tab-pane fade pt-3" id="profile-change-password">
-             
-              <form>
-
-                <div className="row mb-3">
-                  <label for="currentPassword" className="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="password" type="password" className="form-control" id="currentPassword"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="newPassword" className="col-md-4 col-lg-3 col-form-label">New Password</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="newpassword" type="password" className="form-control" id="newPassword"/>
-                  </div>
-                </div>
-
-                <div className="row mb-3">
-                  <label for="renewPassword" className="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                  <div className="col-md-8 col-lg-9">
-                    <input name="renewpassword" type="password" className="form-control" id="renewPassword"/>
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <button type="submit" className="btn btn-primary">Change Password</button>
-                </div>
-              </form>
-
             </div>
 
           </div>
 
+          <div className="col-xl-8">
+
+            <div className="card">
+              <div className="card-body pt-3">
+
+                <ul className="nav nav-tabs nav-tabs-bordered">
+
+                  <li className="nav-item">
+                    <button className="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                  </li>
+
+                  <li className="nav-item">
+                    <button className="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                  </li>
+
+
+
+
+                  <li className="nav-item">
+                    <button className="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                  </li>
+
+                </ul>
+                <div className="tab-content pt-2">
+
+                  <div className="tab-pane fade show active profile-overview" id="profile-overview">
+                    <h5 className="card-title">About</h5>
+                    <p className="small fst-italic"> </p>
+
+                    <h5 className="card-title">Profile Details</h5>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label ">Full Name</div>
+                      <div className="col-lg-9 col-md-8">Manoj Adikari</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Company</div>
+                      <div className="col-lg-9 col-md-8">A soft solutions</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Job</div>
+                      <div className="col-lg-9 col-md-8">Web Designer</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Australia</div>
+                      <div className="col-lg-9 col-md-8">a</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Address</div>
+                      <div className="col-lg-9 col-md-8">78 Pratte Av,Pooraka,5095,SA</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Phone</div>
+                      <div className="col-lg-9 col-md-8">0451177703</div>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-3 col-md-4 label">Email</div>
+                      <div className="col-lg-9 col-md-8">Manojpadikari@gmail.com</div>
+                    </div>
+
+                  </div>
+
+                  <div className="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+
+                    <form>
+                      <div className="row mb-3">
+                        <label className="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                        <div className="col-md-8 col-lg-9">
+                          <div className="col-sm-10">
+                            <input className="form-control" type="file" id="formFile" />
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div className="row mb-3">
+                        <label htmlFor="FirstName" className="col-md-4 col-lg-3 col-form-label">First Name</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="text" className="form-control" id="FirstName" />
+                        </div>
+                      </div>
+                      <div className="row mb-3">
+                        <label htmlFor="LastName" className="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="text" className="form-control" id="LastName" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label className="col-md-4 col-lg-3 col-form-label">Date Of Birth</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="date" className="form-control" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label htmlFor="Address" className="col-md-4 col-lg-3 col-form-label">Address</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="text" className="form-control" id="Address" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label htmlFor="Phone" className="col-md-4 col-lg-3 col-form-label">Phone</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="text" className="form-control" id="Phone" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label htmlFor="Email" className="col-md-4 col-lg-3 col-form-label">Email</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="email" className="form-control" id="Email" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label htmlFor="Twitter" className="col-md-4 col-lg-3 col-form-label">Job Title</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input type="text" className="form-control" id="Twitter" />
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <button type="submit" className="btn btn-primary" >Update</button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                  <div className="tab-pane fade pt-3" id="profile-settings">
+
+
+
+                  </div>
+
+                  <div className="tab-pane fade pt-3" id="profile-change-password">
+
+                    <form>
+
+                      <div className="row mb-3">
+                        <label className="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input name="password" type="password" className="form-control" id="currentPassword" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label className="col-md-4 col-lg-3 col-form-label">New Password</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input name="newpassword" type="password" className="form-control" id="newPassword" />
+                        </div>
+                      </div>
+
+                      <div className="row mb-3">
+                        <label className="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                        <div className="col-md-8 col-lg-9">
+                          <input name="renewpassword" type="password" className="form-control" id="renewPassword" />
+                        </div>
+                      </div>
+
+                      <div className="text-center">
+                        <button type="submit" className="btn btn-primary">Change Password</button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </div>
-      </div>
+      </section>
 
-    </div>
-  </div>
-</section>
-
-</main>
+    </main>
 
   );
 };

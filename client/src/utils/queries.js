@@ -43,3 +43,18 @@ export const QUERY_SELECT_ALL_VEHICLE = gql`
 
 `;
 
+export const QUERY_SELECT_ALL_EMPLOYEE = gql`
+ query GetallEmployee{
+  allEmployee{
+    empid
+    empfirstname
+    emplastname
+    empdateofbirth
+    empaddress
+    empphone
+    empemail
+    empjobtitle
+  }
+}
+
+`;

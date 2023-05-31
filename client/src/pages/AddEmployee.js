@@ -1,39 +1,50 @@
-import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
+import React, { useState } from 'react';
+import { ADD_NEW_EMPLOYEE } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import Alert from 'react-bootstrap/Alert';
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
-import Auth from '../utils/auth';
 
 const Profile = () => {
 
-    const { username: userParam } = useParams();
+    const [formState, setFormState] = useState({
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-        variables: { username: userParam },
+        empprofilpic: '',
+        empfirstname: '',
+        emplastname: '',
+        empdateofbirth: '',
+        empaddress: '',
+        empphone: '',
+        empemail: '',
+        empjobtitle: '',
+
     });
+    const [addEmployee, { error, data }] = useMutation(ADD_NEW_EMPLOYEE);
 
-    const user = data?.me || data?.user || {};
-    // navigate to personal profile page if username is yours
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-        return <Navigate to="/me" />;
-    }
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    };
+    console.log(formState);
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
-    if (!user?.username) {
-        return (
-            <h4>
-                You need to be logged in to see this. Use the navigation links above to
-                sign up or log in!
-            </h4>
-        );
-    }
+        console.log(formState);
+
+        try {
+            const { data } = await addEmployee({
+                variables: { ...formState },
+            });
+            window.location.reload();
+
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
 
     return (
 
@@ -65,74 +76,80 @@ const Profile = () => {
 
 
                                     <div className="tab-pane fade show active profile-overview" id="profile-edit">
+                                        {data ? (
+                                            <Alert variant='success'>
+                                                <p>successfully created</p>
+                                            </Alert>
+                                        ) : (
 
-
-                                        <form>
-                                            <div className="row mb-3">
-                                                <label className="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" />
+                                            <form>
+                                                <div className="row mb-3">
+                                                    <label className="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <div className="col-sm-10">
+                                                            <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Make} name='empprofilpic' />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
 
-                                            <div className="row mb-3">
-                                                <label htmlFor="FirstName" className="col-md-4 col-lg-3 col-form-label">First Name</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="FirstName" type="text" className="form-control" id="FirstName" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="FirstName" className="col-md-4 col-lg-3 col-form-label">First Name</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="text" className="form-control" id="FirstName" onChange={handleChange} value={formState.Veh_Make} name='empfirstname' />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="row mb-3">
-                                                <label htmlFor="LastName" className="col-md-4 col-lg-3 col-form-label">Last Name</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="LastName" type="text" className="form-control" id="LastName" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="LastName" className="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="text" className="form-control" id="LastName" onChange={handleChange} value={formState.Veh_Make} name='emplastname' />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="row mb-3">
-                                                <label  className="col-md-4 col-lg-3 col-form-label">Date Of Birth</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input type="date" className="form-control" />
+                                                <div className="row mb-3">
+                                                    <label className="col-md-4 col-lg-3 col-form-label">Date Of Birth</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="date" className="form-control" onChange={handleChange} value={formState.Veh_Make} name='empdateofbirth' />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="row mb-3">
-                                                <label htmlFor="Address" className="col-md-4 col-lg-3 col-form-label">Address</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="address" type="text" className="form-control" id="Address" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="Address" className="col-md-4 col-lg-3 col-form-label">Address</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="text" className="form-control" id="Address" onChange={handleChange} value={formState.Veh_Make} name='empaddress' />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="row mb-3">
-                                                <label htmlFor="Phone" className="col-md-4 col-lg-3 col-form-label">Phone</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="phone" type="text" className="form-control" id="Phone" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="Phone" className="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="text" className="form-control" id="Phone" onChange={handleChange} value={formState.Veh_Make} name='empphone' />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="row mb-3">
-                                                <label htmlFor="Email" className="col-md-4 col-lg-3 col-form-label">Email</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="email" type="email" className="form-control" id="Email" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="Email" className="col-md-4 col-lg-3 col-form-label">Email</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="email" className="form-control" id="Email" onChange={handleChange} value={formState.Veh_Make} name='empemail' />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div className="row mb-3">
-                                                <label htmlFor="Twitter" className="col-md-4 col-lg-3 col-form-label">Job Title</label>
-                                                <div className="col-md-8 col-lg-9">
-                                                    <input name="twitter" type="text" className="form-control" id="Twitter" />
+                                                <div className="row mb-3">
+                                                    <label htmlFor="Twitter" className="col-md-4 col-lg-3 col-form-label">Job Title</label>
+                                                    <div className="col-md-8 col-lg-9">
+                                                        <input type="text" className="form-control" id="Twitter" onChange={handleChange} value={formState.Veh_Make} name='empjobtitle' />
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                         
-
-                                            <div className="text-center">
-                                                <button type="submit" className="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-
+                                                <div className="text-center">
+                                                    <button type="submit" className="btn btn-primary" onClick={handleFormSubmit} >Save</button>
+                                                </div>
+                                            </form>
+                                        )}
+                                        {error && (
+                                            <Alert variant='danger'>
+                                                {error.message}
+                                            </Alert>
+                                        )}
                                     </div>
 
 
