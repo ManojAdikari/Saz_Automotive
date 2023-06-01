@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
-import  ADD_Make  from '../utils/mutations';
+import  {ADD_Make}  from '../utils/mutations';
 
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
-import  ADD_Model  from '../utils/mutations';
+import  {ADD_MODELS}  from '../utils/mutations';
 import VehiclemakeData from './VehiclemakeData';
 
 
@@ -17,7 +17,7 @@ const Vehiclemodels = () => {
 
 
     });
-    const [addEmployee, { error, data }] = useMutation(ADD_Model);
+    const [addEmployee, { error, data }] = useMutation(ADD_MODELS);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
