@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { QUERY_MODEL_DATA } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
-const Veheckemodeldta = () => {
+const Vehiclemodeldata = () => {
     let activities = [];
     const { loading, data } = useQuery(QUERY_MODEL_DATA);
     const DbVehical = data?.allVehiclemodel || [];
@@ -45,4 +45,4 @@ const Veheckemodeldta = () => {
     );
 };
 
-export default Veheckemodeldta;
+export default Vehiclemodeldata;

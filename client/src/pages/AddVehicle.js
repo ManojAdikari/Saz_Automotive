@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
 import { ADD_NEW_VEHHICLE } from '../utils/mutations';
-import Auth from '../utils/auth';
-import axios from "axios"
-import e from 'cors';
 import VehicalmakeData from '../components/VehicalmakeData';
 import Veheckemodeldta from '../components/Vehiclemodeldata';
 const Addnewvehicle = () => {
@@ -75,19 +71,7 @@ console.log(formState);
 
 
 
-    const addUserData = async(e)=>{
-       
-
-        try {
-            await axios.post("http://localhost:3001/api/InsertData/SaveVehical",formState);
-
-        }
-        catch(err) {
-      console.log(err)
-
-        }
-    }
-
+  
 
         
     
