@@ -9,8 +9,10 @@ import { ADD_Model } from '../utils/mutations';
 import Auth from '../utils/auth';
 import axios from "axios"
 import e from 'cors';
-import VehicalmakeData from './VehicalmakeData'
-const VehicalModel = () => {
+import VehicalmakeData from './VehicalmakeData';
+
+
+const VehicleModel = () => {
 
 
     const [formState, setFormState] = useState({
@@ -110,4 +112,4 @@ const VehicalModel = () => {
     );
 
 };
-export default VehicalModel;
+export default VehicleModel;

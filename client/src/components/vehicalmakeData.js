@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import React from 'react';
 import { QUERY_MAKE_DATA } from '../utils/queries'
 import { useQuery } from '@apollo/client';
 
 
 const VehicalmakeData = () => {
     let activities = [];
+    
     const { loading, data } = useQuery(QUERY_MAKE_DATA);
     const DbVehical = data?.allVehicleMake || [];
     console.log(data);

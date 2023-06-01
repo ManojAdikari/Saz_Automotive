@@ -8,8 +8,8 @@ import { ADD_NEW_VEHHICLE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import axios from "axios"
 import e from 'cors';
-import VehicalmakeData from '../components/VehicalmakeData'
-import Veheckemodeldta from '../components/Veheckemodeldta'
+import VehicalmakeData from '../components/VehicalmakeData';
+import Veheckemodeldta from '../components/Vehiclemodeldata';
 const Addnewvehicle = () => {
 
     const [formState, setFormState] = useState({

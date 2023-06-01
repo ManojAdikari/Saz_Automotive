@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import { QUERY_MODEL_DATA } from '../utils/queries'
+import { QUERY_MODEL_DATA } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 const Veheckemodeldta = () => {
