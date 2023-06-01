@@ -62,7 +62,7 @@ mutation addmake($vehmake: String!) {
 `;
 
 const ADD_Model = gql`
-mutation addmodel($vehmake:String!,$vehmodel: String!) {
+mutation addvehiclemodel($vehmake:String!,$vehmodel: String!) {
   addvehiclemodel(vehmake:$vehmake,vehmodel:$vehmodel) {
     token
     user {
@@ -72,5 +72,6 @@ mutation addmodel($vehmake:String!,$vehmodel: String!) {
   }
 }
 `;
+
 
 module.exports = {LOGIN_USER,ADD_USER,ADD_NEW_VEHHICLE,ADD_NEW_EMPLOYEE,ADD_Make,ADD_Model};

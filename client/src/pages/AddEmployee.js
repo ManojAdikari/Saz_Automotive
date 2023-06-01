@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ADD_NEW_EMPLOYEE } from '../utils/mutations';
+import  ADD_NEW_EMPLOYEE  from '../utils/mutations';
 import { useMutation } from '@apollo/client';
 import Alert from 'react-bootstrap/Alert';
 
