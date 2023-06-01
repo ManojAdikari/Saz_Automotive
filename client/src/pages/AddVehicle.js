@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
 import { ADD_NEW_VEHHICLE } from '../utils/mutations';
-import VehicalmakeData from '../components/VehicalmakeData';
+import VehiclemakeData from '../components/VehiclemakeData';
 import Veheckemodeldta from '../components/Vehiclemodeldata';
 const Addnewvehicle = () => {
 
@@ -102,7 +102,7 @@ console.log(formState);
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Make" onChange={handleChange} value={formState.Veh_Make} name='Veh_Make'>
                                                     <option value="2000">Select Make</option>
-                                                    <VehicalmakeData/>
+                                                    <VehiclemakeData/>
 
 
                                                     </select>

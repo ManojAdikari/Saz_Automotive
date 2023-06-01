@@ -3,7 +3,7 @@ import { QUERY_MAKE_DATA } from '../utils/queries'
 import { useQuery } from '@apollo/client';
 
 
-const VehicalmakeData = () => {
+const VehiclemakeData = () => {
     let activities = [];
     
     const { loading, data } = useQuery(QUERY_MAKE_DATA);
@@ -47,4 +47,4 @@ const VehicalmakeData = () => {
     );
 };
 
-export default VehicalmakeData;
+export default VehiclemakeData;
