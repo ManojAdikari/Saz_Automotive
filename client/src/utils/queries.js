@@ -58,3 +58,21 @@ export const QUERY_SELECT_ALL_EMPLOYEE = gql`
 }
 
 `;
+
+export const QUERY_MAKE_DATA = gql`
+  query allVehicleMake {
+    allVehicleMake {
+      vehmake
+    }
+  }
+  
+`;
+export const QUERY_MODEL_DATA = gql`
+  query allVehiclemodel {
+    allVehiclemodel {
+      vehmodel
+    }
+  }
+  
+`;
+

@@ -98,7 +98,7 @@ const Login = (props) => {
                 <button className="btn btn-primary w-100" variant="primary" type="submit">Login</button>
               </div>
               <div className="col-12">
-                <p className="small mb-0">Don't have account? <a href="/" as={Link} variant='secondary' className="m-2" to="/signup">Create an account</a></p>
+                
                 
               </div>
             </form>

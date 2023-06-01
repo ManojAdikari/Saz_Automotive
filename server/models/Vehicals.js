@@ -62,7 +62,7 @@ Vehicals.init(
        
       },
       Veh_Rego_End_Date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: true,
         
         
@@ -86,7 +86,7 @@ Vehicals.init(
         
       },
       Veh_Purchase_Date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: true,
         
         

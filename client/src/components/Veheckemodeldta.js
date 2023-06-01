@@ -2,26 +2,23 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import { QUERY_SELECT_ALL_EMPLOYEE } from '../utils/queries'
+import { QUERY_MODEL_DATA } from '../utils/queries'
 import { useQuery } from '@apollo/client';
 
 const Veheckemodeldta = () => {
     let activities = [];
-    const { loading, data } = useQuery(QUERY_SELECT_ALL_EMPLOYEE);
-    const DbVehical = data?.GetallEmployee || [];
+    const { loading, data } = useQuery(QUERY_MODEL_DATA);
+    const DbVehical = data?.allVehiclemodel || [];
     console.log(data);
 
 
 
     if (data !== null) {
         if (data !== undefined)
-            for (var i = 0; i < data.allEmployee.length; i++) {
-                var empfirstname = data.allEmployee[i].empfirstname;
-                var emplastname = data.allEmployee[i].emplastname;
-                
-                var Newvehical = empfirstname + " " + emplastname ;
-                activities.push([{ val: data.allEmployee[i].empid, text: Newvehical }]);
-
+            for (var i = 0; i < data.allVehiclemodel.length; i++) {
+        
+            
+                activities.push([{ val: data.allVehiclemodel[i].vehmodel, text: data.allVehiclemodel[i].vehmodel }]);
                 
 
             }

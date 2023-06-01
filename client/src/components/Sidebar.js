@@ -185,6 +185,13 @@ const Sidebar = () => {
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="/ViewAllEmployee">
+                                        <i className="bi bi-circle"></i><span>View Employee</span>
+                                    </a>
+                                </li>
+
+                                
+                                <li>
                                     <a href="/AddmakeModek">
                                         <i className="bi bi-circle"></i><span>Add Vehical Make Model</span>
                                     </a>

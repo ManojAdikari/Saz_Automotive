@@ -8,7 +8,8 @@ import { ADD_NEW_VEHHICLE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import axios from "axios"
 import e from 'cors';
-
+import VehicalmakeData from '../components/VehicalmakeData'
+import Veheckemodeldta from '../components/Veheckemodeldta'
 const Addnewvehicle = () => {
 
     const [formState, setFormState] = useState({
@@ -107,7 +108,7 @@ console.log(formState);
 
                                 <div className="card">
                                     <div className="card-body">
-                                        <h5 className="card-title">Vehical Details</h5>
+                                        <h5 className="card-title">Vehicel Details</h5>
 
 
                                         <Form id='VehicalData'>
@@ -116,10 +117,10 @@ console.log(formState);
                                                 <label className="col-sm-2 col-form-label">Make</label>
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Make" onChange={handleChange} value={formState.Veh_Make} name='Veh_Make'>
-                                                        <option  value="select Make">select Make</option>
-                                                        <option value="Honda">Honda</option>
-                                                        <option value="Jeep">Jeep</option>
-                                                        <option value="Nissan">Nissan</option>
+                                                    <option value="2000">Select Make</option>
+                                                    <VehicalmakeData/>
+
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -127,10 +128,9 @@ console.log(formState);
                                                 <label className="col-sm-2 col-form-label">Model</label>
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Model" onChange={handleChange} value={formState.Veh_Model} name='Veh_Model'>
-                                                        <option value="select Model">select Model</option>
-                                                        <option value="CRV">CRV</option>
-                                                        <option value="Xtraler">Xtraler</option>
-                                                        <option value="X8">X8</option>
+                                                    <option value="2000">Select Model</option>
+                                                        <Veheckemodeldta />
+                                                        
                                                     </select>
                                                 </div>
                                             </div>
@@ -139,9 +139,39 @@ console.log(formState);
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Year" onChange={handleChange} value={formState.Veh_Year} name='Veh_Year'>
                                                         <option value="select Year">select Year</option>
+                                                        <option value="1990">1990</option>
+                                                        <option value="1991">1991</option>
+                                                        <option value="1993">1993</option>
+                                                        <option value="1995">1995</option>
+                                                        <option value="1996">1996</option>
+                                                        <option value="1997">1997</option>
+                                                        <option value="1998">1998</option>
+                                                        <option value="1999">1999</option>
                                                         <option value="2000">2000</option>
+                                                        <option value="2001">2001</option>
+                                                        <option value="2002">2002</option>
+                                                        <option value="2003">2003</option>
+                                                        <option value="2004">2004</option>
+                                                        <option value="2005">2005</option>
+                                                        <option value="2006">2006</option>
+                                                        <option value="2007">2007</option>
+                                                        <option value="2008">2008</option>
+                                                        <option value="2009">2009</option>
+                                                        <option value="2010">2010</option>
+                                                        <option value="2011">2011</option>
                                                         <option value="2012">2012</option>
+                                                        <option value="2013">2013</option>
+                                                        <option value="2014">2014</option>
+                                                        <option value="2015">2015</option>
+                                                        <option value="2016">2016</option>
+                                                        <option value="2017">2017</option>
+                                                        <option value="2018">2018</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">2020</option>
+                                                        <option value="2021">2021</option>
+                                                        <option value="2022">2022</option>
                                                         <option value="2023">2023</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -149,10 +179,22 @@ console.log(formState);
                                                 <label className="col-sm-2 col-form-label">Color</label>
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Color" onChange={handleChange} value={formState.Veh_Color} name='Veh_Color'>
-                                                        <option value="select Color">select Color</option>
-                                                        <option value="Red">Red</option>
+                                                        <option value="select Color">Select Color</option>
                                                         <option value="White">White</option>
+                                                        <option value="Black">Black</option>
+                                                        <option value="Gray">Gray</option>
+                                                        <option value="Silver">Silver</option>
                                                         <option value="Blue">Blue</option>
+                                                        <option value="Red">Red</option>
+                                                        <option value="Brown">Brown</option>
+                                                        <option value="Green">Green</option>
+                                                        <option value="Orange">Orange</option>
+                                                        <option value="Beige">Beige</option>
+                                                        <option value="Purple">Purple</option>
+                                                        <option value="Gold">Gold</option>
+                                                        <option value="Yellow">Yellow</option>
+                                                      
+
                                                     </select>
                                                 </div>
                                             </div>

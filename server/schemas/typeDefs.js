@@ -63,7 +63,7 @@ type employee {
         me: System_users
         allVehicle:[Vehicals]
         allVehicleMake:[VehicleMake]
-        getvehicleModel(vehmake: String!):VehicleModel
+        allVehiclemodel:[VehicleModel]
         allEmployee:[employee]
         getEmpEirstName(empid : ID): employee
 

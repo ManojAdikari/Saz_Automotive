@@ -32,7 +32,9 @@ const resolvers = {
     allVehicleMake: async () => {
       return VehicleMake.findAll();
     },
-
+    allVehiclemodel: async () => {
+      return VehicleModel.findAll();
+    },
     allEmployee: async () => {
       return Employee.findAll();
     },

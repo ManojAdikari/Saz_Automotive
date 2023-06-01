@@ -9,7 +9,7 @@ import { ADD_Model } from '../utils/mutations';
 import Auth from '../utils/auth';
 import axios from "axios"
 import e from 'cors';
-
+import VehicalmakeData from './VehicalmakeData'
 const VehicalModel = () => {
 
 
@@ -69,9 +69,7 @@ const VehicalModel = () => {
                                 <div className="col-sm-10">
                                     <select className="form-select" placeholder="Select make" onChange={handleChange} value={formState.Veh_Make} name='vehmake'>
                                         <option value="select Make">Select make</option>
-                                        <option value="Honda">Honda</option>
-                                        <option value="Jeep">Jeep</option>
-                                        <option value="Nissan">Nissan</option>
+                                        <VehicalmakeData/>
                                     </select>
                                 </div>
                             </div>

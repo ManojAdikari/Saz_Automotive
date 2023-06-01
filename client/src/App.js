@@ -23,7 +23,7 @@ import GeneralServices from './pages/GeneralServices';
 import AddEmployee from './pages/AddEmployee';
 import Repairs from './pages/Repairs';
 import AddMakeModek from './pages/AddMakeModek';
-
+import ViewAllEmployee from './pages/ViewAllEmployee'
 
 import './vendor/bootstrap/css/bootstrap.min.css';
 import './vendor/bootstrap-icons/bootstrap-icons.css';
@@ -129,6 +129,10 @@ function App() {
               <Route
                 path="/AddmakeModek"
                 element={<AddMakeModek />}
+              />
+               <Route
+                path="/ViewAllEmployee"
+                element={<ViewAllEmployee />}
               />
 
 

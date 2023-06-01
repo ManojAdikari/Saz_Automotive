@@ -147,6 +147,9 @@ const Profile = () => {
 
         setEditFormData(formValues);
     };
+
+
+    
     function GetSum(RowAmounts, AddRow) {
 
         if (AddRow === "Add") {
