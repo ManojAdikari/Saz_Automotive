@@ -19,9 +19,11 @@ import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar/TopBar';
 import Addnewvehicle from './pages/AddVehicle';
 import ViewAllVehicle from './pages/ViewAllVehicle';
-import GeneralServices from './pages/GeneralServices'
-import AddEmployee from './pages/AddEmployee'
-import Repairs from './pages/Repairs'
+import GeneralServices from './pages/GeneralServices';
+import AddEmployee from './pages/AddEmployee';
+import Repairs from './pages/Repairs';
+import AddMakeModek from './pages/AddMakeModek';
+
 
 import './vendor/bootstrap/css/bootstrap.min.css';
 import './vendor/bootstrap-icons/bootstrap-icons.css';
@@ -120,9 +122,13 @@ function App() {
                 path="/addEmployee"
                 element={<AddEmployee />}
               />
- <Route
+              <Route
                 path="/Repairs"
                 element={<Repairs />}
+              />
+              <Route
+                path="/AddmakeModek"
+                element={<AddMakeModek />}
               />
 
 

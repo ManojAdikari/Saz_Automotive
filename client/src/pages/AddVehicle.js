@@ -29,31 +29,31 @@ const Addnewvehicle = () => {
         Veh_Image1: '',
         Veh_Image2: '',
         Veh_Image3: '',
-        Veh_Amount: "",
+        Veh_Amount: "" ,
     });
-    const [file, setFile] = useState("");
+    const [file,setFile] = useState("");
 
     const [addnewvehicle, { error, data }] = useMutation(ADD_NEW_VEHHICLE);
 
 
-
-
+    
+  
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setFormState({
-            ...formState,
+       setFormState({
+           ...formState,
             [name]: value,
-        });
+       });
     };
 
 
-
+console.log(formState);
 
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+    
         console.log(formState);
 
         try {
@@ -61,10 +61,10 @@ const Addnewvehicle = () => {
                 variables: { ...formState },
             });
 
-
+            
             window.location.reload();
-
-
+           // Auth.login(data.addUser.token);
+          
 
         } catch (e) {
             console.error(e);
@@ -74,22 +74,22 @@ const Addnewvehicle = () => {
 
 
 
-    const addUserData = async (e) => {
-
+    const addUserData = async(e)=>{
+       
 
         try {
-            await axios.post("http://localhost:3001/api/InsertData/SaveVehical", formState);
+            await axios.post("http://localhost:3001/api/InsertData/SaveVehical",formState);
 
         }
-        catch (err) {
-            console.log(err)
+        catch(err) {
+      console.log(err)
 
         }
     }
 
 
-
-
+        
+    
 
     return (
         <>
@@ -116,7 +116,7 @@ const Addnewvehicle = () => {
                                                 <label className="col-sm-2 col-form-label">Make</label>
                                                 <div className="col-sm-10">
                                                     <select className="form-select" placeholder="select Make" onChange={handleChange} value={formState.Veh_Make} name='Veh_Make'>
-                                                        <option value="select Make">select Make</option>
+                                                        <option  value="select Make">select Make</option>
                                                         <option value="Honda">Honda</option>
                                                         <option value="Jeep">Jeep</option>
                                                         <option value="Nissan">Nissan</option>
@@ -175,20 +175,20 @@ const Addnewvehicle = () => {
                                             <div className="row mb-3">
                                                 <label className="col-sm-2 col-form-label">Vin</label>
                                                 <div className="col-sm-10">
-                                                    <input type="text" placeholder="Enter Vin Number" className="form-control" onChange={handleChange} value={formState.Veh_Vin} name='Veh_Vin' />
+                                                    <input type="text" placeholder="Enter Vin Number" className="form-control" onChange={handleChange} value={formState.Veh_Vin} name='Veh_Vin'/>
                                                 </div>
                                             </div>
                                             <fieldset className="row mb-3">
                                                 <legend className="col-form-label col-sm-2 pt-0">Rego</legend>
                                                 <div className="col-sm-10">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="radio" nameg="gridRadios" id="gridRadios1" checked onChange={handleChange} value={formState.Veh_Is_Registered} name='Veh_Is_Registered' />
+                                                        <input className="form-check-input" type="radio" nameg="gridRadios" id="gridRadios1"  checked onChange={handleChange} value={formState.Veh_Is_Registered} name='Veh_Is_Registered' />
                                                         <label className="form-check-label" htmlFor="gridRadios1">
                                                             Registered
                                                         </label>
                                                     </div>
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="radio" nameg="gridRadios" id="gridRadios2" onChange={handleChange} value={formState.Veh_Is_Registered} name='Veh_Is_Registered' />
+                                                        <input className="form-check-input" type="radio" nameg="gridRadios" id="gridRadios2"   onChange={handleChange} value={formState.Veh_Is_Registered} name='Veh_Is_Registered'/>
                                                         <label className="form-check-label" htmlFor="gridRadios2">
                                                             Unregistered
                                                         </label>
@@ -197,14 +197,14 @@ const Addnewvehicle = () => {
                                                 </div>
                                             </fieldset>
                                             <div className="row mb-3">
-                                                <label className="col-sm-2 col-form-label">Rego Num</label>
+                                                <label  className="col-sm-2 col-form-label">Rego Num</label>
 
                                                 <div className="col-sm-10">
-                                                    <input type="text" placeholder="Enter Vehicle registration number" className="form-control" onChange={handleChange} value={formState.Veh_Rego_Number} name='Veh_Rego_Number' />
+                                                    <input type="text" placeholder="Enter Vehicle registration number" className="form-control"onChange={handleChange} value={formState.Veh_Rego_Number} name='Veh_Rego_Number' />
                                                 </div>
                                             </div>
                                             <div className="row mb-3">
-                                                <label className="col-sm-2 col-form-label">Rego End</label>
+                                                <label  className="col-sm-2 col-form-label">Rego End</label>
                                                 <div className="col-sm-10">
                                                     <input type="date" className="form-control" onChange={handleChange} value={formState.Veh_Rego_End_Date} name='Veh_Rego_End_Date' />
                                                 </div>
@@ -224,72 +224,62 @@ const Addnewvehicle = () => {
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title">Purchase Details </h5>
-                                        {data ? (
-                                            <Alert variant='success'>
-                                                <p>successfully created</p>
-                                            </Alert>
-                                        ) : (
 
-                                            <Form id='VehicalData2'>
+                                        <Form id='VehicalData2'>
 
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Purchase Form</label>
-                                                    <div className="col-sm-10">
-                                                        <input type="text" placeholder="Enter Previous owner" className="form-control" onChange={handleChange} value={formState.Veh_Purchase_From} name='Veh_Purchase_From' />
-                                                    </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">Purchase Form</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" placeholder="Enter Previous owner" className="form-control" onChange={handleChange} value={formState.Veh_Purchase_From} name='Veh_Purchase_From' />
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Purchase Note</label>
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Purchase_Note} name='Veh_Purchase_Note' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">Purchase Note</label>
+                                                <div className="col-sm-10">
+                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Purchase_Note} name='Veh_Purchase_Note'/>
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">PPSR Report</label>
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Purchase_PPSR} name='Veh_Purchase_PPSR' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">PPSR Report</label>
+                                                <div className="col-sm-10">
+                                                    <input className="form-control" type="file" id="formFile"  onChange={handleChange} value={formState.Veh_Purchase_PPSR} name='Veh_Purchase_PPSR' />
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Purchase Date</label>
-                                                    <div className="col-sm-10">
-                                                        <input type="date" className="form-control" onChange={handleChange} value={formState.Veh_Purchase_Date} name='Veh_Purchase_Date' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">Purchase Date</label>
+                                                <div className="col-sm-10">
+                                                    <input type="date" className="form-control" onChange={handleChange} value={formState.Veh_Purchase_Date} name='Veh_Purchase_Date'/>
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Image 1</label>
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" onChange={handleChange} name='Veh_Image1' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label className="col-sm-2 col-form-label">Image 1</label>
+                                                <div className="col-sm-10">
+                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} name='Veh_Image1' />
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Image 2</label>
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Image2} name='Veh_Image2' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">Image 2</label>
+                                                <div className="col-sm-10">
+                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Image2} name='Veh_Image2'/>
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label">Image 3 </label>
-                                                    <div className="col-sm-10">
-                                                        <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Image3} name='Veh_Image3' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label">Image 3 </label>
+                                                <div className="col-sm-10">
+                                                    <input className="form-control" type="file" id="formFile" onChange={handleChange} value={formState.Veh_Image3} name='Veh_Image3'/>
                                                 </div>
-                                                <div className="row mb-3">
-                                                    <label className="col-sm-2 col-form-label"> Amount</label>
-                                                    <div className="col-sm-10">
-                                                        <input type="number" className="form-control" onChange={handleChange} value={formState.Veh_Amount} name='Veh_Amount' />
-                                                    </div>
+                                            </div>
+                                            <div className="row mb-3">
+                                                <label  className="col-sm-2 col-form-label"> Amount</label>
+                                                <div className="col-sm-10">
+                                                    <input type="number" className="form-control" onChange={handleChange} value={formState.Veh_Amount} name='Veh_Amount' />
                                                 </div>
+                                            </div>
 
 
 
-                                            </Form>
-                                        )}
-                                        {error && (
-                                            <Alert variant='danger'>
-                                                {error.message}
-                                            </Alert>
-                                        )}
+                                        </Form>
+
                                     </div>
                                 </div>
 
@@ -300,7 +290,7 @@ const Addnewvehicle = () => {
                         <div className="row mb-3">
 
                             <div className="col-sm-10">
-                                <button type="submit" className="btn btn-primary" id='btnSave' onClick={handleFormSubmit}  >Submit To System</button>
+                                <button type="submit" className="btn btn-primary" id='btnSave' onClick={ handleFormSubmit}  >Submit To System</button>
                             </div>
                         </div>
                     </section>
