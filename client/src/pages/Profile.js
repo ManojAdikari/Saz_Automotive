@@ -97,20 +97,13 @@ const Profile = () => {
                       <div className="col-lg-9 col-md-8">Manoj Adikari</div>
                     </div>
 
-                    <div className="row">
-                      <div className="col-lg-3 col-md-4 label">Company</div>
-                      <div className="col-lg-9 col-md-8">A soft solutions</div>
-                    </div>
-
+                 
                     <div className="row">
                       <div className="col-lg-3 col-md-4 label">Job</div>
-                      <div className="col-lg-9 col-md-8">Web Designer</div>
+                      <div className="col-lg-9 col-md-8">Manaeger</div>
                     </div>
 
-                    <div className="row">
-                      <div className="col-lg-3 col-md-4 label">Australia</div>
-                      <div className="col-lg-9 col-md-8">a</div>
-                    </div>
+                 
 
                     <div className="row">
                       <div className="col-lg-3 col-md-4 label">Address</div>
