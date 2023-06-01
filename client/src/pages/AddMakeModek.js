@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
-import ADD_Make from '../utils/mutations';
-import ADD_Model  from '../utils/mutations';
-import VehicalModel from '../components/VehicleModel';
+import { ADD_Make } from '../utils/mutations';
+import { ADD_Model } from '../utils/mutations';
+
+
+import Vehiclemodels from '../components/Vehiclemodels'
 
 const AddMakeModel = () => {
 
@@ -97,7 +101,7 @@ const AddMakeModel = () => {
 
             <div className="row">
 
-<VehicalModel/>
+<Vehiclemodels/>
 
             </div>
 

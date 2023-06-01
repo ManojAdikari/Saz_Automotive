@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useMutation } from '@apollo/client';
-import { ADD_Make } from '../utils/mutations';
 import { ADD_Model } from '../utils/mutations';
-import Auth from '../utils/auth';
-import axios from "axios"
-import e from 'cors';
 import VehiclemakeData from './VehiclemakeData';
 
 
-const VehicleModel = () => {
+const Vehiclemodels = () => {
 
 
     const [formState, setFormState] = useState({
@@ -112,4 +106,4 @@ const VehicleModel = () => {
     );
 
 };
-export default VehicleModel;
+export default Vehiclemodels;
