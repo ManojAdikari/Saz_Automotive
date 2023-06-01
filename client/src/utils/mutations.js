@@ -62,8 +62,8 @@ mutation addmake($vehmake: String!) {
 `;
 
 const ADD_Model = gql`
-mutation addmake($vehmake: String!,$vehmodel: String!) {
-  addvehiclemodel(vehmake: $vehmake,vehmodel: $vehmodel) {
+mutation addmodel($vehmake:String!,$vehmodel: String!) {
+  addvehiclemodel(vehmake:$vehmake,vehmodel:$vehmodel) {
     token
     user {
       id
