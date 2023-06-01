@@ -248,7 +248,7 @@ const Sidebar = () => {
 
                       </>
                     )}
-                <img src="images/profile-img.jpg" alt="Profile" className="rounded-circle" />
+                <img src="images/NouserImage.png" alt="Profile" className="rounded-circle" />
                 
               </a>
 
