@@ -70,7 +70,7 @@ function App() {
 
 
 
-      {window.location.pathname !== '/' && <Sidebar />}
+  
 
       <Router>
 
