@@ -68,28 +68,19 @@ function App() {
 
     <ApolloProvider client={client}>
 
-
-
       {window.location.pathname !== '/' && <Sidebar />}
 
       <Router>
-
-        <div >
-
-          <div className="container">
 
             <Routes>
               <Route
                 path="/"
                 element={<Login />}
               />
-
-              <Route
+              <Rout
                 path="/login"
                 element={<Login />}
               />
-
-
               <Route
                 path="/home"
                 element={<Home />}
@@ -138,11 +129,8 @@ function App() {
 
             </Routes>
 
-
-          </div>
-
           <Footer />
-        </div>
+  
 
       </Router>
 
